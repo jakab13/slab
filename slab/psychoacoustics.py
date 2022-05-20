@@ -373,12 +373,13 @@ class Trialsequence(collections.abc.Iterator, LoadSaveMixin, TrialPresentationOp
                     self.n_conditions += 1  # add one condition for deviants
             else:  # make a sequence from a given list of trials
                 self.conditions = list(set(trials))
+                new_trials = [None] * len(trials)
                 for i, condition in enumerate(
                         self.conditions):  # encode conditions as integers 1 to n_conditions in trials
                     for t, trial in enumerate(trials):
                         if trial == condition:
-                            trials[t] = i + 1
-                self.trials = trials
+                            new_trials[t] = i + 1
+                self.trials = new_trials
                 self.n_conditions = len(self.conditions)
             if isinstance(self.trials, numpy.ndarray):
                 self.trials = self.trials.tolist()  # convert trials to list

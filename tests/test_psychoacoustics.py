@@ -29,7 +29,7 @@ def test_sequence_from_trials():
 
 def test_sequence():
     for _ in range(100):
-        conditions_list = [numpy.random.randint(2, 10), ["a", "b", "c"], [("a", "b"), (1.5, 3.2)],
+        conditions_list = [numpy.random.choice(100, 10, replace=False), ["a", "b", "c"], [("a", "b"), (1.5, 3.2)],
                            [slab.Sound.pinknoise(), slab.Sound.whitenoise()]]
         kinds = ["random_permutation", "non_repeating", "infinite"]
         for conditions in conditions_list:
